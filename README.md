@@ -87,7 +87,11 @@ Spring Security Oauth2 Extension是基于SpringCloud Security Oauth2，在其基
 1. 引入maven依赖
 
 ```
-
+        <dependency>
+            <groupId>com.github.tangchen-blip</groupId>
+            <artifactId>security-extension</artifactId>
+            <version>1.0.0</version>
+        </dependency>
 ```
 2. 在启动类上增加扫描路径
 
@@ -139,4 +143,4 @@ security.oauth2.login.fail.msg  响应信息参数名 默认为msg
 ```
 
 #### Demo
-[Demo下载地址](https://note.youdao.com/)
+[Demo下载地址](https://github.com/tangchen-blip/blip-auth-server)
