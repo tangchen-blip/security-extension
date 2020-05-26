@@ -1,6 +1,6 @@
-## Spring Security Oauth2 Extension
+##  Security  Extension
 ### 项目介绍
-Spring Security Oauth2 Extension是基于SpringCloud Security Oauth2，在其基础上新增了多种登录方式，扩展了用户登录的方式。主要包括邮箱验证码登录，手机验证码登录，第三方社交登录。支持登录失败自定义返回。实现了登出，从tokenStore中移除认证信息，从而实现统一登出。
+Security Extension是基于SpringCloud Security Oauth2，在其基础上新增了多种登录方式，扩展了用户登录的方式。主要包括邮箱验证码登录，手机验证码登录，第三方社交登录。支持登录失败自定义返回。实现了登出，从tokenStore中移除认证信息，从而实现统一登出。
 ### 项目结构
 项目主要包括component config handler translator
 
