@@ -93,14 +93,9 @@ Security Extension是基于SpringCloud Security Oauth2，在其基础上新增�
             <version>1.0.0</version>
         </dependency>
 ```
-2. 在启动类上增加扫描路径
-
-```
-@ComponentScan(basePackages = {"com.security.foxtc"})
-```
 
 
-3. 在自定义中增加WebSecurityConfigurerAdapter
+2. 在自定义中增加WebSecurityConfigurerAdapter
 
 ```
     @Autowired
@@ -134,7 +129,7 @@ Security Extension是基于SpringCloud Security Oauth2，在其基础上新增�
         
     }
 ```
-4.默认登陆异常返回参数自定义
+3.默认登陆异常返回参数自定义
 
 ```
 security.oauth2.login.fail.code 响应码参数名 默认为code
