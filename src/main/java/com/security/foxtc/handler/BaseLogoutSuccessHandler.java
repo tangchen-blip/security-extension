@@ -2,7 +2,6 @@ package com.security.foxtc.handler;
 
 import org.apache.commons.lang3.StringUtils;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2RefreshToken;
@@ -23,8 +22,12 @@ import java.util.Map;
  */
 public class BaseLogoutSuccessHandler extends SimpleUrlLogoutSuccessHandler {
 
-    @Autowired
     private TokenStore tokenStore;
+
+    public BaseLogoutSuccessHandler tokenStore(TokenStore tokenStore) {
+        this.tokenStore = tokenStore;
+        return this;
+    }
 
     @Override
     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {

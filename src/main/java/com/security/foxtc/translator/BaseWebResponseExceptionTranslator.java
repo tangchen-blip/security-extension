@@ -4,11 +4,9 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.oauth2.common.exceptions.OAuth2Exception;
 import org.springframework.security.oauth2.provider.error.DefaultWebResponseExceptionTranslator;
-import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.Map;
@@ -19,13 +17,21 @@ import java.util.Map;
  *
  * @author tangchen
  */
-@Component
+
 public class BaseWebResponseExceptionTranslator extends DefaultWebResponseExceptionTranslator {
 
-    @Value("${security.oauth2.login.fail.code:code}")
+
     private String codeParam;
-    @Value("security.oauth2.login.fail.msg:msg")
+
     private String msgParam;
+
+    public void setMsgParam(String msgParam) {
+        this.msgParam = msgParam;
+    }
+
+    public void setCodeParam(String codeParam) {
+        this.codeParam = codeParam;
+    }
 
     @Override
     public ResponseEntity<OAuth2Exception> translate(Exception e) throws Exception {
