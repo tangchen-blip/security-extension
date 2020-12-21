@@ -90,7 +90,7 @@ Security Extension是基于SpringCloud Security Oauth2，在其基础上新增�
         <dependency>
             <groupId>com.github.tangchen-blip</groupId>
             <artifactId>security-extension</artifactId>
-            <version>1.0.4</version>
+            <version>1.0.6</version>
         </dependency>
 ```
 
