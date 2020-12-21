@@ -2,7 +2,10 @@ package com.security.foxtc;
 
 
 import com.security.foxtc.component.email.service.EmailUserDetailsService;
+import com.security.foxtc.component.email.service.EmailUserDetailsServiceImpl;
 import com.security.foxtc.component.mobile.service.MobileUserDetailsService;
+import com.security.foxtc.component.mobile.service.MobileUserDetailsServiceImpl;
+import com.security.foxtc.component.social.model.SocialUserDetailsServiceImpl;
 import com.security.foxtc.component.social.service.SocialUserDetailsService;
 import com.security.foxtc.config.EmailSecurityConfigurerAdapter;
 import com.security.foxtc.config.MobileSecurityConfigurerAdapter;
@@ -15,7 +18,11 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.token.AuthorizationServerTokenServices;
@@ -97,5 +104,35 @@ public class SecurityAutoConfigure {
                 .baseAuthenticationFailureHandler(baseAuthenticationFailureHandler)
                 .baseAuthenticationSuccessHandler(baseAuthenticationSuccessHandler)
                 .socialUserDetailsService(socialUserDetailsService);
+    }
+
+    @Bean
+    @ConditionalOnMissingBean(PasswordEncoder.class)
+    PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    @ConditionalOnMissingBean(EmailUserDetailsService.class)
+    EmailUserDetailsService emailUserDetailsService(){
+        return new EmailUserDetailsServiceImpl();
+    }
+
+    @Bean
+    @ConditionalOnMissingBean(SocialUserDetailsService.class)
+    SocialUserDetailsService socialUserDetailsService(){
+        return new SocialUserDetailsServiceImpl();
+    }
+
+    @Bean
+    @ConditionalOnMissingBean(MobileUserDetailsServiceImpl.class)
+    MobileUserDetailsServiceImpl mobileUserDetailsService(){
+        return new MobileUserDetailsServiceImpl();
+    }
+
+    @Bean
+    @ConditionalOnMissingBean(UserDetailsService.class)
+    UserDetailsService userDetailsService(){
+        return new UserDetailServiceImpl();
     }
 }

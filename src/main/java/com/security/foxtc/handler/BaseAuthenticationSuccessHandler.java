@@ -22,7 +22,6 @@ import java.util.Collections;
  *
  * @author tangchen
  */
-@Component
 @Slf4j
 public class BaseAuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
 
